@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper">
+
+	<resultMap type="map" id="mapList">
+		<result column="boardNum" property="boardNum" />
+		<result column="writer" property="writer" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<select id="list" parameterType="map" resultMap="mapList">
+		select
+		boardNum
+		,writer
+		,title
+		,content
+		from test_board
+	</select>
+
+	<insert id="insert" parameterType="map">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			select board_num.nextval FROM DUAL
+		</selectKey>
+		insert into test_board
+		values(
+		#{boardNum}
+		,#{writer}
+		,#{title}
+		,#{content}
+		)
+	</insert>
+
+	<select id="listOne" parameterType="int" resultType="com.test.dto.BoardDto">
+		select
+		boardNum
+		,writer
+		,title
+		,content
+		from test_board
+		where boardNum = #{boardNum}
+	</select>
+
+</mapper>
