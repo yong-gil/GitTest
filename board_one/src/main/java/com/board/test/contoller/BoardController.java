@@ -36,7 +36,6 @@ public class BoardController {
 	public String selectOne(@RequestParam("boardNum") int boardNum,Model model){
 		BoardDto list = new BoardDto();
 		System.out.println("boardNum="+boardNum);
-		//여기까진되는데..
 		list = boardService.listOne(boardNum);
 		model.addAttribute("list", list);
 		return "board/boardOne";

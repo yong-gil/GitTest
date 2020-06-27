@@ -34,6 +34,7 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public BoardDto listOne(int boardNum){
+		System.out.println(sqlSession.selectOne("mapper.listOne", boardNum));
 		return sqlSession.selectOne("mapper.listOne", boardNum);
 	}
 
