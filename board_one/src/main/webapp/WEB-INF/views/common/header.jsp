@@ -15,7 +15,7 @@ function login(){
 	<div class="headerMain">
 		<div class="mainLogo"></div>
 		<div class="headerCenter">
-			<div class="pageName"><a href="/test>">사이트</a></div>
+			<div class="pageName"><a href="/test">사이트</a></div>
 			<div class="memeber">
 			<a href="#none" onclick="window.open('login', '로그인','width=600, height=700'); return false">로그인</a>
 			<a href="#"onclick="window.open('addMember', '회원가입','width=600, height=700'); return false">회원가입</a>

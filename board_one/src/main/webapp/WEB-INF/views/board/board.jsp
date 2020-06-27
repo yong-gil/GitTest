@@ -29,7 +29,7 @@
 					<tr>
 						<td>${list.boardNum}</td>
 						<td>${list.writer}</td>
-						<td><a href="listOne?num=${list.boardNum}">${list.title}</a></td>
+						<td><a href="selectOne?num=${list.boardNum}">${list.title}</a></td>
 						<td>${list.content}</td>
 					</tr>
 				</c:forEach>
