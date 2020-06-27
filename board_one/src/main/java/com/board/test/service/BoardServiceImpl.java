@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.board.test.dao.BoardDao;
-import com.test.dto.BoardDto;
+import com.board.test.dto.BoardDto;
 
 @Service("service")
 public class BoardServiceImpl implements BoardService{
@@ -27,8 +27,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardDto> listOne(int boardNum) {
-		System.out.println("서비스 값?="+boardDao.listOne(boardNum));
+	public BoardDto listOne(int boardNum){
 		return boardDao.listOne(boardNum);
 	}
+
 }

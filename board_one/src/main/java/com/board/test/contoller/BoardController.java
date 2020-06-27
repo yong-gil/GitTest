@@ -8,14 +8,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.board.test.dto.BoardDto;
 import com.board.test.service.BoardService;
-import com.test.dto.BoardDto;
 
 @Controller
 public class BoardController {
@@ -24,23 +23,22 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping("/list")
-	public String list(Map<String,Object> map , Model model) {
+	public String list(Model model,Map<String,Object> map){
 		
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		list = boardService.list(map);
 		model.addAttribute("list", list);
 		
 		return "board/board";
 	}
 	
-	@RequestMapping("/listOne")
-	public String listOne(Model model ,@PathVariable("boardNum") int boardNum) {
-		System.out.println(boardNum);
-		List<BoardDto> listOne = new ArrayList<BoardDto>();
-		listOne = boardService.listOne(boardNum);
-		System.out.println(listOne);
-		model.addAttribute("listOne", listOne);
-		System.out.println(model);
+	@RequestMapping(value = "selectOne",method = RequestMethod.GET)
+	public String selectOne(@RequestParam("boardNum") int boardNum,Model model){
+		BoardDto list = new BoardDto();
+		System.out.println("boardNum="+boardNum);
+		//여기까진되는데..
+		list = boardService.listOne(boardNum);
+		model.addAttribute("list", list);
 		return "board/boardOne";
 	}
 	

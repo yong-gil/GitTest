@@ -1,4 +1,4 @@
-package com.test.dto;
+package com.board.test.dto;
 
 public class MemberDto {
 

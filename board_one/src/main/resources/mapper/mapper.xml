@@ -9,6 +9,11 @@
 		<result column="content" property="content" />
 	</resultMap>
 
+
+    <select id="listAll" parameterType="com.board.test.dto.BoardDto">
+    select * from test_board
+    </select>
+
 	<select id="list" parameterType="map" resultMap="mapList">
 		select
 		boardNum
@@ -19,7 +24,7 @@
 	</select>
 
 	<insert id="insert" parameterType="map">
-		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+		<selectKey keyProperty="boardNum" resultType="_int" order="BEFORE">
 			select board_num.nextval FROM DUAL
 		</selectKey>
 		insert into test_board
@@ -31,13 +36,8 @@
 		)
 	</insert>
 
-	<select id="listOne" parameterType="int" resultType="com.test.dto.BoardDto">
-		select
-		boardNum
-		,writer
-		,title
-		,content
-		from test_board
+	<select id="listOne" resultType="com.board.test.dto.BoardDto">
+		select * from test_board
 		where boardNum = #{boardNum}
 	</select>
 
