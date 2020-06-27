@@ -34,9 +34,22 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div class=pageContorl>
+				<c:forEach varStatus="vs" begin="1" end="${paging}">
+					<c:if test="${page eq vs.current}">
+						<B>${vs.current}</B>
+					</c:if>
+					<c:if test="${page ne vs.current}">
+						<a
+							href="${pageContext.request.contextPath}/listAll?page=${vs.current}">
+							${vs.current} </a>
+					</c:if>
+
+				</c:forEach>
+			</div>
 			<div class="searchBar">
-			<input type="text" size="20">
-			<input type="button" value="검색">
+				<input type="text" size="20"> <input type="button"
+					value="검색">
 			</div>
 		</div>
 		<div id="tab-2" class="tab-content">테이블2</div>

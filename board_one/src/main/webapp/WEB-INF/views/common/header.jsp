@@ -22,7 +22,7 @@ function login(){
 			<a href="">아이디/패스워드 찾기</a>
 			</div>
 			<div class="menu">
-			<a href = "list">게시판</a>
+			<a href = "listAll">게시판</a>
 			</div>
 		</div>
 	</div>

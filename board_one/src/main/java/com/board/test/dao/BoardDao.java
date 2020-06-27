@@ -7,19 +7,23 @@ import com.board.test.dto.BoardDto;
 
 public interface BoardDao {
 
-	List<Map<String, Object>> list(Map<String, Object> map);
+	List<Map<String, Object>> list(Map<String, Object> map,int size,int offset);
 	
 	int insert(String writer,String title,String content);
 
 	BoardDto listOne(int boardNum);
 	
-//	[Ãß°¡ÇÒ »çÇ×]
-//	1. °Ô½ÃÆÇ °Ë»ö
-//	2. °Ô½ÃÆÇ ÆäÀÌÂ¡Ã³¸®
-//	3. °Ô½ÃÆÇ Á¶È¸¼ö
-//	4. ±×·¡ÇÁ api »ç¿ëÇØº¸±â
-//	5. ÅÇÃß°¡¸Ş´º »ç¿ëÇØº¸±â
-//	6. °¢°¢ÀÇ ÅÇ¸¶´Ù ´Ù¸¥ µ¥ÀÌÅÍ º¸¿©ÁÖ±â
+	int listCount();
+//	[ì¶”ê°€í•  ì‚¬í•­]
+//	1. ê²Œì‹œíŒ ê²€ìƒ‰
+//	2. ê²Œì‹œíŒ í˜ì´ì§•ì²˜ë¦¬
+//	3. ê²Œì‹œíŒ ì¡°íšŒìˆ˜
+//	4. ê·¸ë˜í”„ api ì‚¬ìš©í•´ë³´ê¸°
+//	5. íƒ­ì¶”ê°€ë©”ë‰´ ì‚¬ìš©í•´ë³´ê¸°
+//	6. ê°ê°ì˜ íƒ­ë§ˆë‹¤ ë‹¤ë¥¸ ë°ì´í„° ë³´ì—¬ì£¼ê¸°
+
+	List<BoardDto> selectAll(int size,int offset);
+
 
 
 }

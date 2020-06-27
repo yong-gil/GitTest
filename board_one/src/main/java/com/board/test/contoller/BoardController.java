@@ -22,13 +22,25 @@ public class BoardController {
 	@Resource(name = "service")
 	private BoardService boardService;
 	
+	//dto 사용 안할때 쓰는 방법
 	@RequestMapping("/list")
-	public String list(Model model,Map<String,Object> map){
+	public String list(Model model,Map<String,Object> map,
+			@RequestParam(value = "page",defaultValue = "1",required = false)int page){
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-		list = boardService.list(map);
+		list = boardService.list(map,page);
+		int paging = boardService.listCount();
 		model.addAttribute("list", list);
-		
+		model.addAttribute("paging",paging);
+		return "board/board";
+	}
+	
+	@RequestMapping(value = "/listAll",method = RequestMethod.GET)
+	public String listAll(Model model,@RequestParam(value = "page",defaultValue = "1",required = false)int page) {
+		List<BoardDto> dtos = boardService.listAll(page);
+		int paging = boardService.listCount();
+		model.addAttribute("list", dtos);
+		model.addAttribute("paging",paging);
 		return "board/board";
 	}
 	

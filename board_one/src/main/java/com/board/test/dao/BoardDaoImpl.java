@@ -18,7 +18,7 @@ public class BoardDaoImpl implements BoardDao{
 	
 	
 	@Override
-	public List<Map<String, Object>> list(Map<String, Object> map){
+	public List<Map<String, Object>> list(Map<String, Object> map,int size,int offset){
 		return sqlSession.selectList("mapper.list", map);
 	}
 
@@ -29,13 +29,26 @@ public class BoardDaoImpl implements BoardDao{
 		param.put("title", title);
 		param.put("content", content);
 		
-		return sqlSession.insert("insert",param);
+		return sqlSession.insert("mapper.insert",param);
 	}
 
 	@Override
 	public BoardDto listOne(int boardNum){
 		System.out.println(sqlSession.selectOne("mapper.listOne", boardNum));
 		return sqlSession.selectOne("mapper.listOne", boardNum);
+	}
+
+	@Override
+	public int listCount() {
+		return sqlSession.selectOne("mapper.listCount");
+	}
+
+	@Override
+	public List<BoardDto> selectAll(int size,int offset) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("size", size);
+		map.put("offset", offset);
+		return sqlSession.selectList("mapper.listAll",map);
 	}
 
 	
