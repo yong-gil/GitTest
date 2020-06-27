@@ -12,9 +12,9 @@
 <body>
 	<div class="mainBody">
 		<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1">인사관리</li>
-			<li class="tab-link" data-tab="tab-2">생산관리</li>
-			<li class="tab-link" data-tab="tab-3">납품관리</li>
+			<li class="tab-link current" data-tab="tab-1">테이블1</li>
+			<li class="tab-link" data-tab="tab-2">테이블2</li>
+			<li class="tab-link" data-tab="tab-3">테이블3</li>
 		</ul>
 		<button style="float: right">탭추가</button>
 		<div id="tab-1" class="tab-content current">
@@ -26,7 +26,7 @@
 					<th>내용</th>
 				</tr>
 				<c:forEach items="${list}" var="list">
-					<tr onclick="">
+					<tr>
 						<td>${list.boardNum}</td>
 						<td>${list.writer}</td>
 						<td><a href="listOne?num=${list.boardNum}">${list.title}</a></td>
@@ -34,9 +34,13 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div class="searchBar">
+			<input type="text" size="20">
+			<input type="button" value="검색">
+			</div>
 		</div>
-		<div id="tab-2" class="tab-content">생산관리 테이블</div>
-		<div id="tab-3" class="tab-content">납품관리 테이블</div>
+		<div id="tab-2" class="tab-content">테이블2</div>
+		<div id="tab-3" class="tab-content">테이블3</div>
 		<a href="writeForm">글작성</a>
 	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
