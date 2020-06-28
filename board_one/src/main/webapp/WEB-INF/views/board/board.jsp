@@ -23,14 +23,12 @@
 					<th>글번호</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>내용</th>
 				</tr>
 				<c:forEach items="${list}" var="list">
 					<tr>
 						<td>${list.boardNum}</td>
 						<td>${list.writer}</td>
 						<td><a href="selectOne?boardNum=${list.boardNum}">${list.title}</a></td>
-						<td>${list.content}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -48,13 +46,17 @@
 				</c:forEach>
 			</div>
 			<div class="searchBar">
-				<input type="text" size="20"> <input type="button"
-					value="검색">
+				<select name="searchCode">
+					<option value="">선택</option>
+					<option value="title">제목</option>
+					<option value="writer">작성자</option>
+				</select> <input id="searchTxt" type="text" size="20"> <input
+					id="searchBtn" type="button" value="검색">
 			</div>
+			<a href="writeForm">글작성</a>
 		</div>
 		<div id="tab-2" class="tab-content">테이블2</div>
 		<div id="tab-3" class="tab-content">테이블3</div>
-		<a href="writeForm">글작성</a>
 	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

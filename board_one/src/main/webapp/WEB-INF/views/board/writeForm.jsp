@@ -48,6 +48,6 @@
 			<td colspan="2"><input type="button" value="입력" id="writeCheck"></td>
 		</tr>
 	</table>
-	<a href="list">목록보기</a>
+	<a href="listAll">목록보기</a>
 </body>
 </html>

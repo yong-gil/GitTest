@@ -8,5 +8,23 @@ $(document).ready(function(){
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 	})
+	
+	$("searchBtn").click(function(){
+		$.ajax({
+			type : "POST",
+			url : "search",
+			data : {
+				"keyword" : $('#searchTxt').val(),
+			},
+			success : function(data) {
+				if ($.trim(data) == "all" || $.trim(data).equl) {
+					alert("all");
+				} else if ($.trim(data) == "keywordSearch") {
+					alert("keywordSearch");
+				}
+			}
+		})
+	})
 })
+
 

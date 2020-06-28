@@ -70,4 +70,17 @@ public class BoardController {
 		}
 		return msg;
 	}
+	
+	
+	@RequestMapping(value="search",method =  RequestMethod.POST)
+	public @ResponseBody String search(@RequestParam("keyword") String keyword) {
+		String msg ="";
+		System.out.println("keyword"+keyword);
+		if(keyword.equals("") || keyword.isEmpty()) {
+			msg = "all";
+		}else {
+			msg = "keywordSearch";
+		}
+		return  msg;
+	}
 }
