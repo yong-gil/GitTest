@@ -16,4 +16,6 @@ public interface BoardService{
 	int listCount();
 
 	List<BoardDto> listAll(int page);
+
+	List<BoardDto> searchKeyword(String keyword);
 }

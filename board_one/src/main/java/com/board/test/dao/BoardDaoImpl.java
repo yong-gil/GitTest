@@ -51,6 +51,14 @@ public class BoardDaoImpl implements BoardDao{
 		return sqlSession.selectList("mapper.listAll",map);
 	}
 
+	@Override
+	public List<BoardDto> searchKeyword(String keyword) {
+		System.out.println("dao"+keyword);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		return sqlSession.selectList("mapper.search",map);
+	}
+
 	
 	
 

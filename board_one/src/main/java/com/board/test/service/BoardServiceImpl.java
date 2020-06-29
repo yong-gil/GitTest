@@ -49,4 +49,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.selectAll(size,offset);
 	}
 
+	@Override
+	public List<BoardDto> searchKeyword(String keyword) {
+		System.out.println("service"+keyword);
+		return boardDao.searchKeyword(keyword);
+	}
+
 }

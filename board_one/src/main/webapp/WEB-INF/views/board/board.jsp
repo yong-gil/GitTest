@@ -42,17 +42,18 @@
 							href="${pageContext.request.contextPath}/listAll?page=${vs.current}">
 							${vs.current} </a>
 					</c:if>
-
 				</c:forEach>
 			</div>
-			<div class="searchBar">
-				<select name="searchCode">
-					<option value="">선택</option>
-					<option value="title">제목</option>
-					<option value="writer">작성자</option>
-				</select> <input id="searchTxt" type="text" size="20"> <input
-					id="searchBtn" type="button" value="검색">
-			</div>
+			<form action="search" method="post">
+				<div class="searchBar">
+					<select name="searchCode">
+						<option value="">선택</option>
+						<option value="title">제목</option>
+						<option value="writer">작성자</option>
+					</select> <input class="searchTxt" type="text" size="20" name="keyword"> <input
+						class="searchBtn" type="submit" value="검색">
+				</div>
+			</form>
 			<a href="writeForm">글작성</a>
 		</div>
 		<div id="tab-2" class="tab-content">테이블2</div>

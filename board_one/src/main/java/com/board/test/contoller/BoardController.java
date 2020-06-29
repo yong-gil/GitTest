@@ -71,16 +71,12 @@ public class BoardController {
 		return msg;
 	}
 	
-	
+	//search -> ok but paging -> no 
 	@RequestMapping(value="search",method =  RequestMethod.POST)
-	public @ResponseBody String search(@RequestParam("keyword") String keyword) {
-		String msg ="";
-		System.out.println("keyword"+keyword);
-		if(keyword.equals("") || keyword.isEmpty()) {
-			msg = "all";
-		}else {
-			msg = "keywordSearch";
-		}
-		return  msg;
+	public String search(@RequestParam("keyword") String keyword,Model model) {
+		System.out.println("controller"+keyword);
+		List<BoardDto> list = boardService.searchKeyword(keyword);
+		model.addAttribute("list", list);
+		return "board/board";
 	}
 }

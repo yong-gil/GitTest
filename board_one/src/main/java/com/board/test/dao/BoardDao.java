@@ -24,6 +24,8 @@ public interface BoardDao {
 
 	List<BoardDto> selectAll(int size,int offset);
 
+	List<BoardDto> searchKeyword(String keyword);
+
 
 
 }

@@ -11,15 +11,15 @@
 
 
 	<select id="listAll" resultType="com.board.test.dto.BoardDto" parameterType="hashMap">
-	SELECT * FROM 
-	(SELECT A.*,ROWNUM as RNUM,COUNT(*) OVER() AS CNT FROM
-	(SELECT * FROM TEST_BOARD) A)
-	<if test="offset==0"> 
-	WHERE RNUM BETWEEN #{offset} AND #{offset}+#{size}
-	</if>
-	<if test="offset>0">
-	WHERE RNUM BETWEEN #{offset}+1 AND #{offset}+#{size}
-	</if>
+		SELECT * FROM
+		(SELECT A.*,ROWNUM as RNUM,COUNT(*) OVER() AS CNT FROM
+		(SELECT * FROM TEST_BOARD) A)
+		<if test="offset==0">
+			WHERE RNUM BETWEEN #{offset} AND #{offset}+#{size}
+		</if>
+		<if test="offset>0">
+			WHERE RNUM BETWEEN #{offset}+1 AND #{offset}+#{size}
+		</if>
 	</select>
 
 	<select id="list" parameterType="map" resultMap="mapList">
@@ -51,5 +51,18 @@
 
 	<select id="listCount" resultType="_int">
 		select count(*) from test_board
+	</select>
+
+	<select id="search" resultType="com.board.test.dto.BoardDto" parameterType="hashMap">
+		select 
+		boardNum
+		,writer
+		,title
+		,content
+		 from test_board 
+		<if test="keyword != null">
+		where writer like '%' || #{keyword} || '%' 
+		or title like '%' || #{keyword} || '%' 
+		</if>
 	</select>
 </mapper>
